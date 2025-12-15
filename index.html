@@ -332,6 +332,85 @@
         </div>
     </section>
 
+    <!-- Leadership Team Section -->
+    <section id="team" class="py-24 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-3">Who We Are</h2>
+                <h3 class="text-3xl font-bold text-white">Leadership Team</h3>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+                
+                <!-- Profile 1: Cliff Weng -->
+                <div class="group bg-slate-800 rounded-2xl p-6 border border-slate-700 hover:border-slate-500 transition-all hover:-translate-y-1">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center text-slate-400">
+                             <span class="text-2xl font-bold">CW</span>
+                        </div>
+                        <a href="https://www.linkedin.com/in/cliffweng/" target="_blank" class="text-slate-400 hover:text-white transition-colors">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-1">Cliff W.</h4>
+                    <div class="text-blue-400 text-sm font-medium mb-4 uppercase tracking-wide">Principal</div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Senior software engineer and technology leader with over 20 years of experience in financial technology, machine learning, and distributed systems. Expert in building high-performance, scalable systems and leading engineering teams in fast-paced environments.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-slate-900 rounded text-xs text-slate-300">Fintech</span>
+                        <span class="px-2 py-1 bg-slate-900 rounded text-xs text-slate-300">Strategy</span>
+                        <span class="px-2 py-1 bg-slate-900 rounded text-xs text-slate-300">STP</span>
+                    </div>
+                </div>
+
+                <!-- Profile 2: Elaine Schou -->
+                <div class="group bg-slate-800 rounded-2xl p-6 border border-slate-700 hover:border-slate-500 transition-all hover:-translate-y-1">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center text-slate-400">
+                             <span class="text-2xl font-bold">ES</span>
+                        </div>
+                        <a href="https://www.linkedin.com/in/elaineschou/" target="_blank" class="text-slate-400 hover:text-white transition-colors">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-1">Elaine C.</h4>
+                    <div class="text-blue-400 text-sm font-medium mb-4 uppercase tracking-wide">Partner</div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Oversees strategic operations and organizational planning. Focuses on long-term sustainability, operational efficiency, and partnership development, ensuring that portfolio investments align with core values and growth objectives.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-slate-900 rounded text-xs text-slate-300">Risk</span>
+                        <span class="px-2 py-1 bg-slate-900 rounded text-xs text-slate-300">Investment</span>
+                    </div>
+                </div>
+
+                <!-- Profile 3: Julian Weng -->
+                <div class="group bg-slate-800 rounded-2xl p-6 border border-slate-700 hover:border-slate-500 transition-all hover:-translate-y-1">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center text-slate-400">
+                             <span class="text-2xl font-bold">JW</span>
+                        </div>
+                        <a href="https://www.linkedin.com/in/julianweng/" target="_blank" class="text-slate-400 hover:text-white transition-colors">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-1">Julian W.</h4>
+                    <div class="text-blue-400 text-sm font-medium mb-4 uppercase tracking-wide">Associate</div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Background in Computer Science and Finance (UPenn M&T). Experience in quantitative research, healthtech, and software engineering at leading tech firms. Specializes in solving complex problems within social and financial systems.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-slate-900 rounded text-xs text-slate-300">Quantitative</span>
+                        <span class="px-2 py-1 bg-slate-900 rounded text-xs text-slate-300">Engineering</span>
+                        <span class="px-2 py-1 bg-slate-900 rounded text-xs text-slate-300">AI/ML</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- CTA / Contact -->
     <section id="contact" class="py-24 relative overflow-hidden">
         <div class="max-w-3xl mx-auto px-6 relative z-10 text-center">
@@ -392,8 +471,8 @@
             menu.classList.toggle('hidden');
         }
 
-        // Initialize Lucide Icons if used (currently using FontAwesome for simplicity in single file)
-        // lucide.createIcons();
+        // Initialize Lucide Icons
+        lucide.createIcons();
     </script>
 </body>
 </html>
