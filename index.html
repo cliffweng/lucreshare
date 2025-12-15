@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LucreShare | Automated Revenue Splitting</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+
+        :root {
+            --primary: #059669; /* Emerald 600 */
+            --dark: #0f172a;    /* Slate 900 */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #34d399 0%, #059669 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-pattern {
+            background-image: radial-gradient(#334155 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .blob {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.4;
+            animation: float 10s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(20px, 40px) rotate(10deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-50 antialiased overflow-x-hidden">
+
+    <!-- Background Elements -->
+    <div class="fixed inset-0 hero-pattern opacity-10 pointer-events-none"></div>
+    <div class="blob bg-emerald-500 rounded-full top-0 left-0"></div>
+    <div class="blob bg-blue-600 rounded-full bottom-0 right-0" style="animation-delay: 2s;"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-layer-group text-white text-sm"></i>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight">Lucre<span class="text-emerald-400">Share</span></span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#features" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Features</a>
+                    <a href="#how-it-works" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">How it Works</a>
+                    <a href="#pricing" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Pricing</a>
+                    <a href="#contact" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold rounded-full transition-all shadow-lg shadow-emerald-900/50">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-slate-300 hover:text-white" onclick="toggleMobileMenu()">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-800 border-t border-slate-700 absolute w-full">
+            <div class="flex flex-col p-4 gap-4">
+                <a href="#features" class="text-slate-300 hover:text-white">Features</a>
+                <a href="#how-it-works" class="text-slate-300 hover:text-white">How it Works</a>
+                <a href="#pricing" class="text-slate-300 hover:text-white">Pricing</a>
+                <a href="#contact" class="text-emerald-400 font-bold">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-emerald-300 text-xs font-semibold uppercase tracking-wider mb-8 animate-fade-in-up">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                Now in Early Access
+            </div>
+            
+            <h1 class="text-5xl lg:text-7xl font-bold leading-tight mb-6 max-w-4xl mx-auto">
+                Democratize Success.<br>
+                <span class="gradient-text">Automate the Wealth.</span>
+            </h1>
+            
+            <p class="text-lg lg:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                The modern way to manage equity, automate dividends, and split revenue for startups, creator collectives, and distributed teams.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button onclick="document.getElementById('contact').scrollIntoView()" class="w-full sm:w-auto px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-full transition-all shadow-lg shadow-emerald-900/50 transform hover:scale-105">
+                    Start Sharing Lucre
+                </button>
+                <button class="w-full sm:w-auto px-8 py-4 glass-card hover:bg-white/10 text-white font-semibold rounded-full transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-play text-xs"></i> Watch Demo
+                </button>
+            </div>
+
+            <!-- UI Mockup -->
+            <div class="mt-20 relative max-w-5xl mx-auto">
+                <div class="glass-card rounded-2xl p-2 border border-slate-700 shadow-2xl">
+                    <div class="bg-slate-900 rounded-xl overflow-hidden aspect-[16/9] relative">
+                        <!-- Header Mockup -->
+                        <div class="h-12 border-b border-slate-800 flex items-center px-4 gap-2">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                        <!-- Content Mockup -->
+                        <div class="p-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="md:col-span-2 space-y-4">
+                                <div class="h-8 w-1/3 bg-slate-800 rounded"></div>
+                                <div class="h-64 bg-slate-800/50 rounded-xl flex items-end p-4 gap-2">
+                                    <div class="w-full bg-emerald-500/20 h-[40%] rounded-t hover:bg-emerald-500/30 transition-all"></div>
+                                    <div class="w-full bg-emerald-500/40 h-[60%] rounded-t hover:bg-emerald-500/50 transition-all"></div>
+                                    <div class="w-full bg-emerald-500/60 h-[35%] rounded-t hover:bg-emerald-500/70 transition-all"></div>
+                                    <div class="w-full bg-emerald-500 h-[75%] rounded-t shadow-[0_0_20px_rgba(16,185,129,0.3)]"></div>
+                                    <div class="w-full bg-emerald-500/50 h-[50%] rounded-t hover:bg-emerald-500/60 transition-all"></div>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="h-32 bg-slate-800 rounded-xl p-4">
+                                    <div class="text-slate-400 text-sm mb-1">Total Distributed</div>
+                                    <div class="text-2xl font-bold text-white">$124,500.00</div>
+                                    <div class="text-xs text-emerald-400 mt-2 flex items-center gap-1">
+                                        <i class="fa-solid fa-arrow-trend-up"></i> +12% this month
+                                    </div>
+                                </div>
+                                <div class="h-32 bg-slate-800 rounded-xl p-4">
+                                    <div class="text-slate-400 text-sm mb-1">Active Partners</div>
+                                    <div class="flex -space-x-2 mt-2">
+                                        <div class="w-8 h-8 rounded-full bg-blue-500 border-2 border-slate-800"></div>
+                                        <div class="w-8 h-8 rounded-full bg-purple-500 border-2 border-slate-800"></div>
+                                        <div class="w-8 h-8 rounded-full bg-yellow-500 border-2 border-slate-800"></div>
+                                        <div class="w-8 h-8 rounded-full bg-slate-700 border-2 border-slate-800 flex items-center justify-center text-xs text-white">+5</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners / Trust -->
+    <section class="py-10 border-y border-slate-800/50 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-sm text-slate-500 mb-6 uppercase tracking-widest font-semibold">Trusted by modern collectives</p>
+            <div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+                <div class="text-2xl font-bold text-white flex items-center gap-2"><i class="fa-brands fa-stripe"></i> Stripe</div>
+                <div class="text-2xl font-bold text-white flex items-center gap-2"><i class="fa-brands fa-aws"></i> AWS</div>
+                <div class="text-2xl font-bold text-white flex items-center gap-2"><i class="fa-brands fa-ethereum"></i> Chainlink</div>
+                <div class="text-2xl font-bold text-white flex items-center gap-2"><i class="fa-brands fa-hubspot"></i> HubSpot</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section id="features" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Built for the <span class="text-emerald-400">Collaborative Economy</span></h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">Stop using spreadsheets to track equity. LucreShare automates the complex math of fairness.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="glass-card p-8 rounded-2xl hover:bg-slate-800 transition-colors group">
+                    <div class="w-12 h-12 bg-emerald-900/50 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-sliders text-emerald-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Dynamic Splitting</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Configure rules based on contribution, seniority, or project milestones. When revenue hits, we split it instantly.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="glass-card p-8 rounded-2xl hover:bg-slate-800 transition-colors group">
+                    <div class="w-12 h-12 bg-blue-900/50 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-file-contract text-blue-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Smart Contracts</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Optional blockchain integration for immutable, transparent ledger recording of every penny distributed.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="glass-card p-8 rounded-2xl hover:bg-slate-800 transition-colors group">
+                    <div class="w-12 h-12 bg-purple-900/50 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-globe text-purple-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Global Payouts</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Pay your team in USD, EUR, or Crypto. We handle the currency conversion and compliance automatically.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-24 bg-slate-800/30">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">From Revenue to Pocket in Seconds</h2>
+                    <div class="space-y-8">
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center font-bold text-slate-900">1</div>
+                            <div>
+                                <h4 class="text-lg font-bold mb-1">Connect Income Sources</h4>
+                                <p class="text-slate-400 text-sm">Integrate Stripe, PayPal, or bank accounts. LucreShare listens for incoming deposits.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center font-bold text-slate-900">2</div>
+                            <div>
+                                <h4 class="text-lg font-bold mb-1">Define the Cap Table</h4>
+                                <p class="text-slate-400 text-sm">Set percentages for founders, investors, and employees. Add vesting schedules easily.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center font-bold text-slate-900">3</div>
+                            <div>
+                                <h4 class="text-lg font-bold mb-1">Auto-Distribute</h4>
+                                <p class="text-slate-400 text-sm">The moment money hits, it's split and sent. Notifications go out instantly.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-0 bg-emerald-500 blur-[100px] opacity-20"></div>
+                    <div class="glass-card p-8 rounded-2xl relative border border-slate-700">
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="text-slate-400 uppercase text-xs font-bold tracking-wider">Recent Activity</span>
+                            <span class="text-emerald-400 text-xs"><i class="fa-solid fa-circle text-[8px] animate-pulse"></i> Live</span>
+                        </div>
+                        <div class="space-y-4">
+                            <!-- Transaction Item -->
+                            <div class="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded bg-green-900/50 text-green-400 flex items-center justify-center">
+                                        <i class="fa-solid fa-arrow-down"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm font-bold">Stripe Payout</div>
+                                        <div class="text-xs text-slate-500">Today, 10:42 AM</div>
+                                    </div>
+                                </div>
+                                <div class="text-green-400 font-mono font-bold">+$10,000.00</div>
+                            </div>
+                            
+                            <!-- Split Item -->
+                            <div class="pl-8 space-y-2">
+                                <div class="flex items-center justify-between p-2 border-l-2 border-slate-700">
+                                    <span class="text-sm text-slate-300 pl-2">Founder Pool (40%)</span>
+                                    <span class="text-sm font-mono text-slate-300">$4,000.00</span>
+                                </div>
+                                <div class="flex items-center justify-between p-2 border-l-2 border-slate-700">
+                                    <span class="text-sm text-slate-300 pl-2">Team Dividends (30%)</span>
+                                    <span class="text-sm font-mono text-slate-300">$3,000.00</span>
+                                </div>
+                                <div class="flex items-center justify-between p-2 border-l-2 border-slate-700">
+                                    <span class="text-sm text-slate-300 pl-2">Treasury (30%)</span>
+                                    <span class="text-sm font-mono text-slate-300">$3,000.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 bg-emerald-900/20 border-y border-emerald-900/30">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+                <div class="text-4xl font-bold text-white mb-2">$50M+</div>
+                <div class="text-sm text-emerald-200/70">Processed Volume</div>
+            </div>
+            <div>
+                <div class="text-4xl font-bold text-white mb-2">12k+</div>
+                <div class="text-sm text-emerald-200/70">Transactions Split</div>
+            </div>
+            <div>
+                <div class="text-4xl font-bold text-white mb-2">99.9%</div>
+                <div class="text-sm text-emerald-200/70">Uptime Reliability</div>
+            </div>
+            <div>
+                <div class="text-4xl font-bold text-white mb-2">0%</div>
+                <div class="text-sm text-emerald-200/70">Hidden Fees</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Contact -->
+    <section id="contact" class="py-24 relative overflow-hidden">
+        <div class="max-w-3xl mx-auto px-6 relative z-10 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to share the wealth?</h2>
+            <p class="text-slate-400 mb-10 text-lg">Join the 500+ forward-thinking companies automating their finances with LucreShare.</p>
+            
+            <form onsubmit="event.preventDefault(); alert('Thanks for your interest! This is a demo site.');" class="max-w-md mx-auto space-y-4">
+                <div class="relative">
+                    <input type="email" placeholder="Enter your work email" class="w-full pl-6 pr-32 py-4 bg-slate-800 border border-slate-700 rounded-full focus:outline-none focus:border-emerald-500 text-white placeholder-slate-500 transition-all">
+                    <button type="submit" class="absolute right-1.5 top-1.5 bottom-1.5 px-6 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-full transition-colors">
+                        Get Access
+                    </button>
+                </div>
+                <p class="text-xs text-slate-500">No credit card required. Free 14-day trial.</p>
+            </form>
+        </div>
+        
+        <!-- Decorative Grid -->
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoNSwgMTUwLCAxMDUsIDAuMSkiLz48L3N2Zz4=')] opacity-20"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-slate-800 bg-slate-900">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 bg-emerald-500 rounded flex items-center justify-center">
+                    <i class="fa-solid fa-layer-group text-white text-[10px]"></i>
+                </div>
+                <span class="text-lg font-bold">LucreShare</span>
+            </div>
+            
+            <div class="text-slate-500 text-sm">
+                &copy; 2025 LucreShare Inc. All rights reserved.
+            </div>
+
+            <div class="flex gap-6">
+                <a href="#" class="text-slate-500 hover:text-white transition-colors"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" class="text-slate-500 hover:text-white transition-colors"><i class="fa-brands fa-github"></i></a>
+                <a href="#" class="text-slate-500 hover:text-white transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('bg-slate-900/90', 'backdrop-blur-md', 'shadow-lg');
+            } else {
+                nav.classList.remove('bg-slate-900/90', 'backdrop-blur-md', 'shadow-lg');
+            }
+        });
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Initialize Lucide Icons if used (currently using FontAwesome for simplicity in single file)
+        // lucide.createIcons();
+    </script>
+</body>
+</html>
